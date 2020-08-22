@@ -16,6 +16,7 @@ const ManageCoursePage = ({
   ...props
 }) => {
   const [course, setCourse] = useState({ ...props.course });
+  //eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState({});
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import actionType from "./actionType";
 import * as courseAPI from "../../api/courseApi";
+import { beginApiCall } from "./apiStatusActions";
 
 export const loadCourseSuccess = (courses) => {
   return {
@@ -25,6 +26,7 @@ export const updateCourseSuccess = (course) => {
 // redux thunk functions
 export const loadCourses = () => {
   return function (dispatch) {
+    dispatch(beginApiCall());
     return courseAPI
       .getCourses()
       .then((courses) => {
@@ -38,7 +40,9 @@ export const loadCourses = () => {
 
 // save course
 export const saveCourse = (course) => {
+  //eslint-disable-next-line no-unused-vars
   return function (dispatch, getState) {
+    dispatch(beginApiCall());
     return courseAPI
       .saveCourse(course)
       .then((savedCourse) => {
